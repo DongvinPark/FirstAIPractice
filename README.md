@@ -47,9 +47,10 @@
     2. click the NVIDIA download archive url.
     2. you may need to sign up NVIDIA developer and sign in.
     3. choose the right env(x86-64, ubuntu 22.04 ...) and follow the instructions provided by NVIDIA.
-4. Install OpenCV
+4. Install PyTorch and OpenCV
    1. run this cmd.
    ```shell
+    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
     pip install opencv-python opencv-python-headless
     ```
 5. Install PyCharm and Setup Interpreter
