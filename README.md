@@ -9,7 +9,7 @@
 - Ubuntu 22.04 LTS with 116 GB of total SSD space.
 - Need to install nvidia gpu driver, cuda toolkit, cuDNN
 - Need to install python, pytorch, tensorflow, opencv. Use pip cmd.
-- Ask ChatGPT "how can I set image processing AI dev environment using pytorch, tensorflow, opencv?".
+- Ask ChatGPT "how can I set image processing AI dev environment using pytorch, tensorflow, opencv?" and follow GPT's explanations.
 - Used Jetbrains PyCharm Community edition IDE.
 <br>
 
@@ -67,3 +67,15 @@
     GPU detected: [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
     cuDNN version: 9
     ```
+6. Error Handling
+   1. If you got a error message saying,
+   ```text
+   Loaded runtime CuDNN library: 9.1.0 but source was compiled with: 9.3.0.
+   ```
+   2. delete pre-installed tensorflow and reinstall it with version of '2.16.x'.
+   3. this error occurs because TensorFlow 2.18.0 expects cuDNN 9.3+, but your system had cuDNN 9.1.0 installed.
+   4. uninstall Tensorflow & Keras and reinstall it.
+   ```shell
+   pip uninstall tensorflow keras
+   pip install tensorflow==2.16.1 keras
+   ```
