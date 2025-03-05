@@ -10,7 +10,6 @@
 - Need to install nvidia gpu driver, cuda toolkit, cuDNN
 - Need to install python, pytorch, tensorflow, opencv. Use pip cmd.
 - Ask ChatGPT "how can I set image processing AI dev environment using pytorch, tensorflow, opencv?" and follow GPT's explanations.
-- Used Jetbrains PyCharm Community edition IDE.
 <br>
 
 ## How to Install Conda, Tensorflow, CUDA, cuDNN on Ubuntu 22.04 LTS with NVIDIA Geforce RTX GPU?
