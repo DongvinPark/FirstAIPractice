@@ -45,16 +45,16 @@
    sudo apt install nvidia-driver-550
    sudo reboot
    ```
-   2. After reboot, run this command. This will give us the information about the psysical GPU. 'CUDA 12.4' means, current nvidia-driver supports CUDA toolkit version 12.4. So we should install this CUDA toolkit version.
+   2. After reboot, run this command. This will give us the information about the psysical GPU. 'CUDA 12.3' means, current nvidia-driver supports CUDA toolkit version 12.3. So we should install this CUDA toolkit version.
    ```shell
    dongvin@ubuntu >> nvidia-smi
-   (cmd result) ..... CUDA 12.4 ...
+   (cmd result) ..... CUDA 12.3 ...
    ```
 <br><br/>
 4. Install CUDA Toolkit
-   1. Go to this NVIDIA official download url. We can also find this url by googling with 'cuda toolkit 12.4 download'.
+   1. Go to this NVIDIA official download url. We can also find this url by googling with 'cuda toolkit 12.3 download'.
    ```text
-   https://developer.nvidia.com/cuda-12-4-0-download-archive
+   https://developer.nvidia.com/cuda-12-3-0-download-archive
    ```
    2. Choose these categories : Linux >> x86_64 >> Ubuntu >> 22.04 >> runfile(local)
    3. NVIDIA official website will give you two commands. Run these commands.
