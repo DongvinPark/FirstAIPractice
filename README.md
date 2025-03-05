@@ -73,7 +73,7 @@
    source ~/.bashrc
    ```
 <br><br/>
-5. Install DUDA Deep Neural Network(==cuDNN)
+5. Install CUDA Deep Neural Network(==cuDNN)
    1. We must choose right version of cuDNN. We will use Tensorflow-2.16.1 and previously installed CUDA 12.3.
    2. So, We must choose CuDNN 8.9.x. We can get the [version comparability information](https://www.tensorflow.org/install/source#gpu) at this official tensorflow website.
    3. Access [cuDNN Archive](https://developer.nvidia.com/rdp/cudnn-archive) offered by NVIDIA and choose the 'Download cuDNN v8.9.7 (December 5th, 2023), for CUDA 12.x' tab.
