@@ -194,7 +194,7 @@ def get_input_optimizer(input_img):
 
 
 def run_style_transfer(cnn, normalization_mean, normalization_std,
-                       content_img, style_img, input_img, num_steps=500,
+                       content_img, style_img, input_img, num_steps=300,
                        style_weight=1e6, content_weight=1):
     print('Building the style transfer model..')
     model, style_losses, content_losses = get_style_model_and_losses(cnn,
@@ -261,6 +261,11 @@ output = run_style_transfer(cnn, cnn_normalization_mean, cnn_normalization_std,
 plt.figure()
 imshow(output, title='Output Image')
 print("Total train & test time(sec):", time.time() - start_time)
+
+output_image = output.cpu().clone().squeeze(0)
+output_image = unloader(output_image)
+output_image.save("./data/videos/style-transfer/style-transferred-frames/output_stylized.jpg")
+print("Output image saved as 'output_stylized.jpg'")
 
 plt.ioff()
 plt.show()
