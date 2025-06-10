@@ -74,7 +74,7 @@ imshow(content_image, 'Content Image')
 plt.subplot(1,2,2)
 imshow(style_image, 'Style Image')
 
-plt.show()
+#plt.show()
 
 stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
 tensor_to_image(stylized_image)
