@@ -20,7 +20,7 @@ def extract_frames_to_files(video_path, frame_dir, ext='png',max_frame:int = Non
         Input arg: video path, output directory for images.
     """
     if not os.path.exists(frame_dir):
-        print("Tasik, no directory available for frames, exit")
+        print("dongvin, no directory available for frames, exit")
         return -1
     cap = cv2.VideoCapture(video_path)
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -33,14 +33,14 @@ def extract_frames_to_files(video_path, frame_dir, ext='png',max_frame:int = Non
         frame_path = os.path.join(frame_dir, f"{frame_count:04d}.{ext}")
         success = cv2.imwrite(frame_path, frame)
         if not success:
-            print("Tasik, image write fails. exit.")
+            print("dongvin, image write fails. exit.")
             return -1,-1,-1
         frame_count += 1
         if max_frame is not None and max_frame==frame_count:
             break
                             
     cap.release()
-    print(f"Tasik, Extracted {frame_count} frames.")
+    print(f"dongvin, Extracted {frame_count} frames.")
     return frame_count, width, height
 
 def extract_frame(video_path, max_frame:int = None):

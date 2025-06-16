@@ -46,7 +46,7 @@ if not os.path.exists(out_name+'.json'):
         lang='ch')
 
     result = ocr.predict(input=input_image)
-    # tasik, this is the basic rule as written in the github
+    # dongvin, this is the basic rule as written in the github
     # so it's better to handle the resultant json to isolate the file handling
     # from the detection and generation of data.
     for res in result:
@@ -117,7 +117,7 @@ for text,box,score in zip(texts,boxes,scores):
 
     # translation via Googla Cloud Translation API
     translated = do_translate(text, 'zh', 'ko')
-    print(f"Tasik, {text}:{translated}")
+    print(f"dongvin, {text}:{translated}")
 
     x,y = box[0], box[3]
     draw.text((x, y), translated, font=font, fill=(255, 0, 0))

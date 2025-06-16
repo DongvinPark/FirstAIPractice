@@ -38,7 +38,7 @@ ocr_result = ocr.ocr(img_path, cls=True)
 # =======================
 # STEP 2: Install zh → ko Translation Model (only once)
 # =======================
-# tasik, there is no direct way from chinese to korean. So break it down.
+# dongvin, there is no direct way from chinese to korean. So break it down.
 with open('/home/alphaai/Documents/SECRET/GoogleTranslationAPIKey.txt', 'r') as file:
     API_KEY = file.readline().strip()
 translation_url = f"https://translation.googleapis.com/language/translate/v2?key={API_KEY}"
@@ -77,7 +77,7 @@ from_to_code = [("zh","en"), ("en","ko")]
 image_pil = Image.open(img_path)
 draw = ImageDraw.Draw(image_pil)
 
-# tasik, make sure to run "sudo apt install fonts-nanum" in linux
+# dongvin, make sure to run "sudo apt install fonts-nanum" in linux
 font_path = "/usr/share/fonts/truetype/nanum/NanumGothic.ttf"
 font = ImageFont.truetype(font_path,size=15)
 
@@ -85,10 +85,10 @@ chinese_char_pattern = re.compile(r'[\u4e00-\u9fff]+')
 for line in ocr_result:
     for box, (text, confidence) in line:
         if confidence < 0.4:  # low confidence skip
-            print(f"Tasik, {text} has low confidence {confidence}, skip it")
+            print(f"dongvin, {text} has low confidence {confidence}, skip it")
             continue
         if chinese_char_pattern.search(text) is None: 
-            #print(f"Tasik, {text} is not a chinese text. skip it")    
+            #print(f"dongvin, {text} is not a chinese text. skip it")    
             continue
         # meta
         #translator of NLLB (Meta)
@@ -97,7 +97,7 @@ for line in ocr_result:
         to_code = 'ko'
         translated = do_translate(text, from_code, to_code)
 
-        print(f"Tasik, from: {from_code}:{text}, to {to_code}:{translated}, confience: {confidence}")
+        print(f"dongvin, from: {from_code}:{text}, to {to_code}:{translated}, confience: {confidence}")
 
         # Draw bounding box
         _box =(box[0], box[2])
