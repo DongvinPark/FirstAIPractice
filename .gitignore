@@ -7,3 +7,10 @@
 
 # Data
 data
+
+# Output
+out
+output
+
+# Cache
+__pycache__
