@@ -44,6 +44,12 @@ os.makedirs(styled_output_frame_dir, exist_ok=True)
 
 hub_model = hub.load('https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2')
 
+# Model optimization parameters
+style_weight=1e-2
+content_weight=1e4
+total_variation_weight = 100
+opt = tf.keras.optimizers.Adam(learning_rate=0.02, beta_1=0.99, epsilon=1e-1)
+
 style_transfer_traning_cnt = 300
 
 
@@ -181,12 +187,6 @@ class StyleContentModel(tf.keras.models.Model):
 extractor = StyleContentModel(style_layers, content_layers)
 style_targets = extractor(style_image)['style']
 
-
-# Model optimization parameters
-style_weight=1e-2
-content_weight=1e4
-total_variation_weight = 100
-opt = tf.keras.optimizers.Adam(learning_rate=0.02, beta_1=0.99, epsilon=1e-1)
 
 def style_content_loss(outputs, content_targets, image):
   style_outputs = outputs['style']
