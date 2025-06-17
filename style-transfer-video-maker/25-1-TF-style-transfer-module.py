@@ -31,7 +31,8 @@ import tensorflow_hub as hub
 
 
 ######### Define Constants
-input_video_path = './data/videos/style-transfer/input.mp4'
+input_video_file_name = 'input.mp4'
+input_video_path = './data/videos/style-transfer/' + input_video_file_name
 origin_video_frames_output_dir = './data/videos/style-transfer/frames'
 os.makedirs(origin_video_frames_output_dir, exist_ok=True)
 
