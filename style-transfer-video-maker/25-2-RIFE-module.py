@@ -32,6 +32,8 @@ RIFE_RESULT_MP4_DIR = "/home/alphaai/Documents/FirstAIPractice/data/videos/style
 
 RIFE_VID_DIR = "/home/alphaai/Documents/ECCV2022-RIFE/vid_out"
 
+origin_video_frames_output_dir = './data/videos/style-transfer/frames'
+
 
 ### apply RIFE on style-transferred images.
 rife_command = [
@@ -90,7 +92,15 @@ else:
     sys.exit("Aborting the script...")
 
 
-### clean up RIFE result images.
+### clean up all input source images.
 for filename in os.listdir(RIFE_VID_DIR):
     file_path = os.path.join(RIFE_VID_DIR, filename)
+    os.remove(file_path)
+
+for filename in os.listdir(RIFE_INPUT_FRAMES_PATH):
+    file_path = os.path.join(RIFE_INPUT_FRAMES_PATH, filename)
+    os.remove(file_path)
+
+for filename in os.listdir(origin_video_frames_output_dir):
+    file_path = os.path.join(origin_video_frames_output_dir, filename)
     os.remove(file_path)
