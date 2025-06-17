@@ -31,17 +31,18 @@ import tensorflow_hub as hub
 
 
 ######### Define Constants
+absolute_path_root = "/home/alphaai/Documents/FirstAIPractice/"
 input_video_file_name = 'input.mp4'
 style_img_file_name = 'kandinsky.jpg'
-input_video_path = './data/videos/style-transfer/' + input_video_file_name
-origin_video_frames_output_dir = './data/videos/style-transfer/frames'
+input_video_path = absolute_path_root + 'data/videos/style-transfer/' + input_video_file_name
+origin_video_frames_output_dir = absolute_path_root + 'data/videos/style-transfer/frames'
 os.makedirs(origin_video_frames_output_dir, exist_ok=True)
 
 fps = 25
 gop = 75
 style_transfer_target_factor = 7
-style_image_path = './data/images/neural-style/' + style_img_file_name
-styled_output_frame_dir = "./data/videos/style-transfer/style-transferred-frames"
+style_image_path = absolute_path_root + 'data/images/neural-style/' + style_img_file_name
+styled_output_frame_dir = absolute_path_root + "data/videos/style-transfer/style-transferred-frames"
 os.makedirs(styled_output_frame_dir, exist_ok=True)
 
 hub_model = hub.load('https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2')

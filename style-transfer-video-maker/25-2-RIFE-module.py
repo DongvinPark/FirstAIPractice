@@ -20,19 +20,21 @@ import os
 import sys
 import subprocess
 
+ABSOLUTE_ROOT_PATH = "/home/alphaai/Documents/FirstAIPractice/"
+
 PYTHON_EXEC = "/home/alphaai/miniconda3/envs/rife/bin/python"
 RIFE_ROOT_DIR_PATH = "/home/alphaai/Documents/ECCV2022-RIFE"
 RIFE_SCRIPT_PATH = "/home/alphaai/Documents/ECCV2022-RIFE/inference_video.py"
-RIFE_INPUT_FRAMES_PATH = "/home/alphaai/Documents/FirstAIPractice/data/videos/style-transfer/style-transferred-frames"
+RIFE_INPUT_FRAMES_PATH = ABSOLUTE_ROOT_PATH + "data/videos/style-transfer/style-transferred-frames"
 RIFE_EXP_FACTOR = 3
-RIFE_OUTPUT_DIR_PATH = "/home/alphaai/Documents/FirstAIPractice/data/videos/style-transfer/rife-frames"
+RIFE_OUTPUT_DIR_PATH = ABSOLUTE_ROOT_PATH + "data/videos/style-transfer/rife-result"
 
 FPS = 30
-RIFE_RESULT_MP4_DIR = "/home/alphaai/Documents/FirstAIPractice/data/videos/style-transfer/rife-frames/rife_result.mp4"
+RIFE_RESULT_MP4_DIR = ABSOLUTE_ROOT_PATH + "data/videos/style-transfer/rife-result/rife_result.mp4"
 
 RIFE_VID_DIR = "/home/alphaai/Documents/ECCV2022-RIFE/vid_out"
 
-origin_video_frames_output_dir = './data/videos/style-transfer/frames'
+origin_video_frames_output_dir = ABSOLUTE_ROOT_PATH + 'data/videos/style-transfer/frames'
 
 
 ### apply RIFE on style-transferred images.
