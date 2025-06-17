@@ -37,7 +37,7 @@ os.makedirs(origin_video_frames_output_dir, exist_ok=True)
 
 fps = 25
 gop = 75
-style_transfer_target_factor = 40
+style_transfer_target_factor = 7
 style_image_path = './data/images/neural-style/kandinsky.jpg'
 styled_output_frame_dir = "./data/videos/style-transfer/style-transferred-frames"
 os.makedirs(styled_output_frame_dir, exist_ok=True)
@@ -50,7 +50,7 @@ content_weight=1e4
 total_variation_weight = 100
 opt = tf.keras.optimizers.Adam(learning_rate=0.02, beta_1=0.99, epsilon=1e-1)
 
-style_transfer_traning_cnt = 300
+style_transfer_traning_cnt = 700
 
 
 
@@ -62,7 +62,7 @@ while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
         break;
-    cv2.imwrite(f'{origin_video_frames_output_dir}/frame_{frame_cnt:05d}.jpg', frame)
+    cv2.imwrite(f'{origin_video_frames_output_dir}/{frame_cnt:05d}.png', frame)
     frame_cnt += 1
 
 cap.release()
@@ -74,7 +74,7 @@ cap.release()
 for filename in os.listdir(origin_video_frames_output_dir):
     if filename.lower().endswith((".jpg", ".jpeg", ".png")):
         # Extract the numeric part of the filename: e.g., "frame_000123.jpg" → 123
-        number_part = filename.split("_")[-1].split(".")[0]
+        number_part = filename.split(".")[0]
         try:
             frame_num = int(number_part)
             if frame_num % style_transfer_target_factor != 0:
@@ -87,6 +87,16 @@ image_files = sorted([
     f for f in os.listdir(origin_video_frames_output_dir)
     if f.lower().endswith((".jpg", ".jpeg", ".png"))
 ])
+
+# Rename files to 00000.png, 00001.png, ...
+for new_idx, filename in enumerate(image_files):
+    ext = os.path.splitext(filename)[1]  # Keep extension (e.g., .png)
+    new_name = f"{new_idx:05d}{ext}"
+    
+    src_path = os.path.join(origin_video_frames_output_dir, filename)
+    dst_path = os.path.join(origin_video_frames_output_dir, new_name)
+
+    os.rename(src_path, dst_path)
 
 
 
@@ -221,7 +231,7 @@ def train_step(image, content_targets):
 
 # === BATCH STYLE TRANSFER ===
 
-frame_files = sorted([f for f in os.listdir(origin_video_frames_output_dir) if f.endswith('.jpg')])
+frame_files = sorted([f for f in os.listdir(origin_video_frames_output_dir) if f.endswith('.png')])
 """ ❗Use this when fails to import tqdm util❗
 for i, fname in enumerate(frame_files):
     print(f"[{i+1}/{len(frame_files)}] Processing {fname}...")
