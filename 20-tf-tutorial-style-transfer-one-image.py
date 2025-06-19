@@ -1,5 +1,6 @@
 import os
 import tensorflow as tf
+from datetime import datetime
 
 # Load compressed models from tensorflow_hub
 os.environ['TFHUB_MODEL_LOAD_FORMAT'] = 'COMPRESSED'
@@ -268,4 +269,10 @@ end = time.time()
 print("Total time: {:.1f}".format(end-start))
 
 final_img = tensor_to_image(image)
+
+# Save the image
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+filename = f"stylized_output_{timestamp}.jpg"
+final_img.save(filename)
+
 final_img.show()  # Opens image in Preview or default viewer
