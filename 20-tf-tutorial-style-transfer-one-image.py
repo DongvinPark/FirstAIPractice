@@ -1,5 +1,16 @@
 import os
 import tensorflow as tf
+
+# Enable dynamic GPU memory growth
+gpus = tf.config.list_physical_devices('GPU')
+if gpus:
+    try:
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+        print("✅ Memory growth enabled for GPU")
+    except RuntimeError as e:
+        print("❌ Memory growth setting failed:", e)
+
 from datetime import datetime
 
 # Load compressed models from tensorflow_hub
@@ -19,6 +30,7 @@ import functools
 import tensorflow_hub as hub
 
 hub_model = hub.load('https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2')
+
 
 
 def tensor_to_image(tensor):
@@ -271,7 +283,7 @@ print("Total time: {:.1f}".format(end-start))
 final_img = tensor_to_image(image)
 
 # Save the image
-timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
 filename = f"stylized_output_{timestamp}.jpg"
 final_img.save(filename)
 
